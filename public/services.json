@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Bengali Platter",
+    "description": "Bengali Platter consists of all the popular bengali food. With plain rice there will be provided multiple vortas,chicken curry,Hilsha/Rui(according to the customer choice),Beef/Mutton(according to the customer choice) and light dal. This platter also contains desert which is firni(very popular in Bangladesh)",
+    "photoURL": "https://i.ibb.co/3T07G2v/bengali-platter.jpg",
+    "rating": "0",
+    "reviewed": "0",
+    "price": "499"
+  },
+  {
+    "name": "Chinese Platter",
+    "description": "This is premium Chinese Platter.This platter has fried rice, manchurian, spicy wings, soup noodles and  chaomin. This exclusinve platter is only available during lunch and dinner. This mouth watering platter is one of the chief's favorite.",
+    "photoURL": "https://i.ibb.co/tHgLNMf/chinese-platter.jpg",
+    "rating": "0",
+    "reviewed": "0",
+    "price": "599"
+  },
+  {
+    "name": "Thai Platter",
+    "description": "Thai Platter is not very popular in the restuarant but it actually tastes good with veriy mild spice.Bangladeshi people sometimes don't feel comfortable with mild spiceness with their taste bud but this platter will change that mindset.This platter has Chicken Satays, Crispy Spring Rolls, Fish Cakes and Pandan. ",
+    "photoURL": "https://i.ibb.co/vmrjrb5/thai-platter.jpg",
+    "rating": "0",
+    "reviewed": "0",
+    "price": "459"
+  },
+  {
+    "name": "Mexican Platter",
+    "description": "Mexican Thai platter includes some exclusive tasty items. It has the taste of both sweet and spicy flavor. It consists of Beef Mini Chimis, Chicken Mini Chimis, Red Corn Chicken Taquitos & Tamale Bites",
+    "photoURL": "https://i.ibb.co/H4KbD29/mexican-platter.jpg",
+    "rating": "0",
+    "reviewed": "0",
+    "price": "299"
+  },
+  {
+    "name": "Japannese Platter",
+    "description": "This is one the most expensive Platter. This Japaneese platter is different from other and suitable dips are provided with it also. This platter consists with multiple flavor sushi.",
+    "photoURL": "https://i.ibb.co/9gdzD85/japaneese-platter.jpg",
+    "rating": "0",
+    "reviewed": "0",
+    "price": "699"
+  },
+  {
+    "name": "Fast-Food Platter",
+    "description": "This platter is for family package. It has a lot of different items and all items are quite good in quantity.It includes Pizza,Burger,French Fries, spring roll, sandwich,tacos and different kind of dips.",
+    "photoURL": "https://i.ibb.co/TKVnjrk/fast-food-platter.jpg",
+    "rating": "0",
+    "reviewed": "0",
+    "price": "899"
+  }
+]
