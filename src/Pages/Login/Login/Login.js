@@ -1,13 +1,27 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { toast } from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom';
 import img from '../../../Assets/others/loginBanner.jpg';
+import { AuthContext } from '../../../Context/AuthProvider';
+import SocialLogin from '../SocialLogin/SocialLogin';
+
 const Login = () => {
+    const {signInUser} = useContext(AuthContext);
+    const navigate = useNavigate();
     const handleLogIn = event =>{
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
         console.log(email,password);
+        signInUser(email,password)
+        .then(result=>{
+            const user = result.user;
+            toast.success('Succesfully Logged in');
+            navigate('/');
+
+        })
+        .catch(err=>console.log(err))
     }
     return (
       <div className="hero mt-24 min-h-screen ">
@@ -50,6 +64,9 @@ const Login = () => {
                 Sign Up
               </Link>
             </p>
+            <div>
+                <SocialLogin></SocialLogin>
+            </div>
           </div>
         </div>
       </div>
