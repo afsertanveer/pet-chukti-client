@@ -26,7 +26,7 @@ const Header = () => {
               <Link to="/my-reviews">My Reviews</Link>
             </li>
             <li className="font-semibold">
-              <Link to="/add-platter">Add New Menu</Link>
+              <Link to="/add-menu">Add New Menu</Link>
             </li>
           </>
         ) : (
