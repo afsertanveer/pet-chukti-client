@@ -5,7 +5,7 @@ import img from "../../../Assets/others/loginBanner.jpg";
 import { AuthContext } from './../../../Context/AuthProvider';
 
 const SignUp = () => {
-    const {createUser} = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
     const handleSignUp = event =>{
         event.preventDefault();
@@ -14,8 +14,17 @@ const SignUp = () => {
         const email = form.email.value;
         const photoURL = form.photoURL.value;
         const password = form.password.value;
+        const profile = {
+           displayName: name,
+           photoURL: photoURL,
+        };
         createUser(email,password)
         .then(result=>{
+            updateUserProfile(profile)
+              .then(() => {})
+              .catch((error) => {
+                console.error(error);
+              });
             const user =result.user;
             console.log(photoURL,name,user);
             toast.success(`Succesfully Registered ${name}`)
