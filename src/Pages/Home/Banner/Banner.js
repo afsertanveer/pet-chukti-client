@@ -6,10 +6,10 @@ const Banner = () => {
         <div className="hero-content text-center mt-12">
           <div className="max-w-md text-white">
             <div className="mx-auto">
-              <img src={bannerImg} className="w-full" alt="" />
+              <img src={bannerImg} className="w-full" alt="banner-img" />
             </div>
             <h1 className="text-3xl text-center mt-12">
-              Welcome to{" "}
+              Welcome to <br/>
               <span className="text-7xl font-extrabold ">PetChukti</span>
             </h1>
             <p className="py-6">

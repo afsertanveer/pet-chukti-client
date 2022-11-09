@@ -1,10 +1,28 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom';
 import img from "../../../Assets/others/loginBanner.jpg";
+import { AuthContext } from './../../../Context/AuthProvider';
 
 const SignUp = () => {
+    const {createUser} = useContext(AuthContext);
+    const navigate = useNavigate();
     const handleSignUp = event =>{
-        
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const photoURL = form.photoURL.value;
+        const password = form.password.value;
+        createUser(email,password)
+        .then(result=>{
+            const user =result.user;
+            console.log(photoURL,name,user);
+            toast.success(`Succesfully Registered ${name}`)
+            navigate('/');
+        })
+        .catch(error=>console.log(error));
+
     }
   return (
     <div className="hero w-full min-h-screen my-20">
@@ -32,7 +50,7 @@ const SignUp = () => {
                 <span className="label-text">Email</span>
               </label>
               <input
-                type="text"
+                type="email"
                 name="email"
                 placeholder="email"
                 className="input input-bordered"
@@ -54,7 +72,7 @@ const SignUp = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="text"
+                type="password"
                 name="password"
                 placeholder="password"
                 className="input input-bordered"

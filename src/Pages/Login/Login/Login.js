@@ -2,6 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import img from '../../../Assets/others/loginBanner.jpg';
 const Login = () => {
+    const handleLogIn = event =>{
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email,password);
+    }
     return (
       <div className="hero mt-24 min-h-screen ">
         <div className="hero-content grid gap-16 md:grid-cols-2  lg:flex-row">
@@ -9,7 +16,7 @@ const Login = () => {
             <img src={img} className="h-full" alt="" />
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl  py-20">
-            <form className="card-body">
+            <form onSubmit={handleLogIn} className="card-body">
               <h1 className="text-5xl font-bold">Login now!</h1>
               <div className="form-control">
                 <label className="label">
