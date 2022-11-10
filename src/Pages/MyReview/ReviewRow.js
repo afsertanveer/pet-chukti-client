@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ReviewRow = ({ review, handleDelete, handleEditReview }) => {
+const ReviewRow = ({ review, handleDelete}) => {
   const { menuName, details, _id } = review;
   return (
     <tr>

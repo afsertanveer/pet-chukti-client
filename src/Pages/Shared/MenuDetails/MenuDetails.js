@@ -1,10 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { FaStar } from "react-icons/fa";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
 import useTitle from '../../../hooks/useTitle';
 import Review from '../../Review/Review';
+
 const MenuDetails = () => {
     const {user} = useContext(AuthContext);
     const [reviews,setReviews] = useState([]);
@@ -90,7 +93,11 @@ const MenuDetails = () => {
                 {name}
               </h1>
             </div>
-            <img src={photoURL} className="inline lg:w-3/4" alt="" />
+            <PhotoProvider>
+              <PhotoView src={photoURL}>
+                <img src={photoURL} className="inline lg:w-3/4" alt="" />
+              </PhotoView>
+            </PhotoProvider>
           </div>
           <div className="p-4 lg:px-32 text-center text-gray-500 font-bold">
             <p className="text-sm lg:text-3xl ">{description}</p>
