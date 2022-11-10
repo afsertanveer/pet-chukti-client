@@ -7,7 +7,7 @@ const MenuCards = () => {
     const navigate = useNavigate();
     useEffect(()=>{
         const number=3;
-        fetch(`http://localhost:5000/menu?number=${number}`)
+        fetch(`https://pet-chukti-server.vercel.app/menu?number=${number}`)
         .then(res=>res.json())
         .then(data=>setMenuItems(data));
     },[])

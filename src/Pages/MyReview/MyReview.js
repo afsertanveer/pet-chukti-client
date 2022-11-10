@@ -10,7 +10,7 @@ const MyReview = () => {
     const [myReviews,setMyReviews] = useState([]);
     const email=user?.email;
     useEffect(() => {
-      fetch(`http://localhost:5000/review/userReview/${email}`, {
+      fetch(`https://pet-chukti-server.vercel.app/review/userReview/${email}`, {
         headers: {
           authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -34,7 +34,7 @@ const MyReview = () => {
         "Are you sure? You want to cancel this order"
       );
       if (proceed) {
-        fetch(`http://localhost:5000/review/${id}`, {
+        fetch(`https://pet-chukti-server.vercel.app/review/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

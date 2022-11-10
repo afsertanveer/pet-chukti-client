@@ -15,7 +15,7 @@ const EditReview = () => {
         const details= form.review.value;
         console.log(details);
        fetch(
-         `http://localhost:5000/review/${_id}`,
+         `https://pet-chukti-server.vercel.app/review/${_id}`,
          {
            method: "PATCH",
            headers: {

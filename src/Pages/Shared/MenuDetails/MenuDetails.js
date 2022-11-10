@@ -32,7 +32,7 @@ const MenuDetails = () => {
           timeReviewed,
           rating: userSetRating,
         };
-        fetch("http://localhost:5000/review", {
+        fetch("https://pet-chukti-server.vercel.app/review", {
           method: "POST",
           headers: {
             "content-type": "application/json"
@@ -66,7 +66,7 @@ const MenuDetails = () => {
     }
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/review/${_id}`)
+        fetch(`https://pet-chukti-server.vercel.app/review/${_id}`)
         .then(res=>res.json())
         .then(data=>{
           setReviews(data);

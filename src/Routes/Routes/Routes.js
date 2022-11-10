@@ -27,13 +27,13 @@ export const router = createBrowserRouter([
       {
         path: "/menu",
         element: <Menu></Menu>,
-        loader: () => fetch("http://localhost:5000/menu"),
+        loader: () => fetch("https://pet-chukti-server.vercel.app/menu"),
       },
       {
         path: "/menu/:id",
         element: <MenuDetails></MenuDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/menu/${params.id}`),
+          fetch(`https://pet-chukti-server.vercel.app/menu/${params.id}`),
       },
       {
         path: "/login",
@@ -63,7 +63,7 @@ export const router = createBrowserRouter([
         path: "/editReview/:id",
         element: <EditReview></EditReview>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/review/reviewDetails/${params.id}`),
+          fetch(`https://pet-chukti-server.vercel.app/review/reviewDetails/${params.id}`),
       },
       {
         path:'/blogs',

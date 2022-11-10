@@ -23,7 +23,7 @@ const AddMenu = () => {
             photoURL,
             price
         }
-         fetch("http://localhost:5000/menu", {
+         fetch("https://pet-chukti-server.vercel.app/menu", {
            method: "POST",
            headers: {
              "content-type": "application/json",
