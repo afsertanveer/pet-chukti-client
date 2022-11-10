@@ -8,7 +8,7 @@ import img6 from '../../../Assets/services/6.jpg';
 const Slider = () => {
     return (
       <div className="text-center mt-20">
-        <h2 className="text-5xl font-bold text-orange-600">
+        <h2 className="text-3xl font-bold text-orange-600">
           Captures of the current available platters is in slider.
         </h2>
         <div className="carousel w-full mt-3 mx-auto bg-slate-700 lg:w-1/2">

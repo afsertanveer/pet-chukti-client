@@ -4,9 +4,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import img from '../../../Assets/others/loginBanner.jpg';
 import { AuthContext } from '../../../Context/AuthProvider';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import useTitle from './../../../hooks/useTitle';
 
 const Login = () => {
-    const {signInUser} = useContext(AuthContext);
+    useTitle('Login')
+    const {signInUser,loading} = useContext(AuthContext);
     const navigate = useNavigate();
     const handleLogIn = event =>{
         event.preventDefault();
@@ -22,6 +24,13 @@ const Login = () => {
 
         })
         .catch(err=>console.log(err))
+    }
+    if(loading){
+        return (
+          <div className=" flex justify-center items-center">
+            <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
+          </div>
+        );
     }
     return (
       <div className="hero mt-24 min-h-screen ">

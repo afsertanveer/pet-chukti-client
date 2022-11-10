@@ -3,9 +3,11 @@ import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import img from "../../../Assets/others/loginBanner.jpg";
 import { AuthContext } from './../../../Context/AuthProvider';
+import useTitle from './../../../hooks/useTitle';
 
 const SignUp = () => {
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    useTitle('Sign up');
+    const { createUser, updateUserProfile, loading } = useContext(AuthContext);
     const navigate = useNavigate();
     const handleSignUp = event =>{
         event.preventDefault();
@@ -32,6 +34,13 @@ const SignUp = () => {
         })
         .catch(error=>console.log(error));
 
+    }
+    if (loading) {
+      return (
+        <div className=" flex justify-center items-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
+        </div>
+      );
     }
   return (
     <div className="hero w-full min-h-screen my-20">

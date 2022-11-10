@@ -10,7 +10,7 @@ const Banner = () => {
             </div>
             <h1 className="text-3xl text-center mt-12">
               Welcome to <br/>
-              <span className="text-7xl font-extrabold ">PetChukti</span>
+              <span className="text-5xl font-extrabold lg:text-7xl">PetChukti</span>
             </h1>
             <p className="py-6">
               Tihs kitchen is cloud based. Here the food will be made after the

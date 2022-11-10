@@ -18,7 +18,7 @@ const Header = () => {
           <Link to="/">Home</Link>
         </li>
         <li className="font-semibold">
-          <Link to="/platters">Platters</Link>
+          <Link to="/menu">Menu</Link>
         </li>
         {user ? (
           <>
