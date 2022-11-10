@@ -72,6 +72,7 @@ const SignUp = () => {
                 name="email"
                 placeholder="email"
                 className="input input-bordered"
+                required
               />
             </div>
             <div className="form-control">
@@ -83,6 +84,7 @@ const SignUp = () => {
                 name="photoURL"
                 placeholder="Photo Url"
                 className="input input-bordered"
+                required
               />
             </div>
             <div className="form-control">

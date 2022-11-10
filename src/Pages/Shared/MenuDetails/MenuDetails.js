@@ -6,22 +6,26 @@ import Review from '../../Review/Review';
 const MenuDetails = () => {
     const {user} = useContext(AuthContext);
     const [reviews,setReviews] = useState([]);
+    const [rating,setRating] = useState(0);
+    const [userSetRating,setUserSetRating] = useState(5);
     const menu =useLoaderData();
-    const {_id,photoURL,name,price,rating,reviewed,description} = menu;
+    const {_id,photoURL,name,price,description} = menu;
     const email=user?.email;
+    const userPhoto = user?.photoURL;
     const handleSubmit = event =>{
         event.preventDefault();
         const form = event.target;
         const newReview = form.review.value;
         const timeReviewed = new Date();
-        console.log(timeReviewed);
-        const review={
-            menu:_id,
-            menuName:name,
-            email,
-            details:newReview,
-            timeReviewed
-        }
+        const review = {
+          menu: _id,
+          menuName: name,
+          email,
+          photoURL: userPhoto,
+          details: newReview,
+          timeReviewed,
+          rating: userSetRating,
+        };
         fetch("http://localhost:5000/review", {
           method: "POST",
           headers: {
@@ -34,7 +38,21 @@ const MenuDetails = () => {
             if (data.acknowledged) {
               alert("Review placed successfully");
               form.reset();
+              let putRating= 0;
+              let count=0;
               const allReviews = [review,...reviews];
+              
+
+              allReviews.map(review=>{
+                putRating = putRating + parseFloat(review.rating);
+                count++;
+                return putRating;
+              })
+              if(count!==0){
+                putRating = (putRating/count).toFixed(1);
+                
+              }
+              setRating(putRating)
               setReviews(allReviews);
             }
           })
@@ -44,8 +62,22 @@ const MenuDetails = () => {
     useEffect(()=>{
         fetch(`http://localhost:5000/review/${_id}`)
         .then(res=>res.json())
-        .then(data=>setReviews(data));
-    },[])
+        .then(data=>{
+          setReviews(data);
+          let getRating=0;
+          let c=0;
+          data.map(review=>{
+            getRating= getRating+parseFloat(review.rating);
+            c++;
+            return getRating;
+          })
+          let newRating=0;
+          if(c!==0){
+           newRating = (getRating/c).toFixed(1);
+          }
+          setRating(newRating);
+        });
+    },[_id])
     return (
       <div>
         <div className="bg-green-200">
@@ -71,51 +103,70 @@ const MenuDetails = () => {
           </div>
         </div>
 
-        {user?.email ? (
-          <>
-            <div className="my-20 p-4 lg:p-36">
-              <div className="mb-10">
-                <h1 className="text-center text-3xl lg:text-5xl mb-6">
-                  Add Your Review
-                </h1>
-                <form onSubmit={handleSubmit}>
-                  <label>
-                    Review:
-                    <br />
-                    <textarea
-                      name="review"
-                      className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none"
-                      rows="4"
-                    ></textarea>
-                  </label>
-                  <div className="text-center mt-12">
-                    <button
-                      type="submit"
-                      className="btn btn-outline btn-success"
-                    >
-                      Add Review
-                    </button>
-                  </div>
-                </form>
-              </div>
+        <div className="my-20 p-4 lg:p-36">
+          <div className="mb-10">
+            <h1 className="text-center text-3xl lg:text-5xl mb-6">
+              Add Your Review
+            </h1>
+            {user ? (
+              <form onSubmit={handleSubmit}>
+                <label className="text-2xl">
+                  Your Review
+                  <br />
+                  <textarea
+                    name="review"
+                    className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none"
+                    rows="4"
+                    placeholder="Add Your Review Here"
+                  ></textarea>
+                </label>
+                <br />
+                <label className="flex mr-5 items-center text-2xl">
+                  Ratings
+                  <select
+                    className="px-3 py-2 text-gray-700 border rounded-lg focus:outline-none ml-5"
+                    name="option"
+                    onChange={(event) => setUserSetRating(event.target.value)}
+                  >
+                    ><option value="5">5</option>
+                    <option value="4.5">4.5</option>
+                    <option value="4">4</option>
+                    <option value="3.5">3.5</option>
+                    <option value="3">3</option>
+                    <option value="2.5">2.5</option>
+                    <option value="2">2</option>
+                    <option value="1.5">1.5</option>
+                    <option value="1">1</option>
+                    <option value="0.5">0.5</option>
+                  </select>
+                  <FaStar className="text-yellow-500 ml-5"></FaStar>
+                </label>
+                <div className="text-center mt-4">
+                  <button type="submit" className="btn btn-outline btn-success">
+                    Add Review
+                  </button>
+                </div>
+              </form>
+            ) : (
+              <p className="text-4xl text-center font-bold mt-14">
+                Please
+                <Link to="/login" className="text-red-600">
+                  Login
+                </Link>
+                To add Review
+              </p>
+            )}
+          </div>
 
-              {reviews.length === 0 ? (
-                <h2 className="text-4xl text-center font-bold">
-                  No Reviews Yet
-                </h2>
-              ) : (
-                <h2 className="text-5xl text-center">All Reviews</h2>
-              )}
-              {reviews.map((review) => (
-                <Review key={review._id} review={review}></Review>
-              ))}
-            </div>
-          </>
-        ) : (
-          <p className="text-4xl text-center font-bold mt-14">
-            Please <Link to='/login'  className='text-red-600'>Login</Link> To add Review
-          </p>
-        )}
+          {reviews.length === 0 ? (
+            <h2 className="text-4xl text-center font-bold">No Reviews Yet</h2>
+          ) : (
+            <h2 className="text-5xl text-center mt-12">All Reviews</h2>
+          )}
+          {reviews.map((review, _idx) => (
+            <Review key={_idx} review={review}></Review>
+          ))}
+        </div>
       </div>
     );
 };
