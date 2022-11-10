@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../../LayOut/Main";
 import SignUp from "../../Pages/Login/SignUp/SignUp";
 import Menu from "../../Pages/Menu/Menu";
+import MenuDetails from "../../Pages/Shared/MenuDetails/MenuDetails";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import AddMenu from './../../Pages/AddMenu/AddMenu';
 import Home from './../../Pages/Home/Home/Home';
@@ -24,7 +25,13 @@ export const router = createBrowserRouter([
       {
         path: "/menu",
         element: <Menu></Menu>,
-        loader:()=> fetch("http://localhost:5000/menu"),
+        loader: () => fetch("http://localhost:5000/menu"),
+      },
+      {
+        path: "/menu/:id",
+        element: <MenuDetails></MenuDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/menu/${params.id}`),
       },
       {
         path: "/login",

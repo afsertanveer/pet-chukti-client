@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const MenuItem = ({ menu }) => {
   const { _id, name, photoURL, description, price } = menu;
@@ -9,10 +10,12 @@ const MenuItem = ({ menu }) => {
       </figure>
       <div className="card-body">
         <h2 className="card-title text-3xl text-center">{name}</h2>
-        <p>{ description}</p>
+        <p>{description}</p>
         <p className="">Price: {price} Tk.</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">See Details</button>
+          <Link to={`/menu/${_id}`}>
+            <button className="btn btn-primary">See Details</button>
+          </Link>
         </div>
       </div>
     </div>
