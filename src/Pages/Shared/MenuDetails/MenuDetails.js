@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { FaStar } from "react-icons/fa";
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
@@ -38,7 +39,7 @@ const MenuDetails = () => {
           .then((res) => res.json())
           .then((data) => {
             if (data.acknowledged) {
-              alert("Review placed successfully");
+              toast.success('Successfully Placed the review');
               form.reset();
               let putRating= 0;
               let count=0;
