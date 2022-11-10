@@ -29,8 +29,7 @@ const MenuCards = () => {
         <div className="text-center mt-12">
           <Link to='/menu'>
             <button
-              className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg"
-            >
+              className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg">
               See ALL
             </button>
           </Link>
