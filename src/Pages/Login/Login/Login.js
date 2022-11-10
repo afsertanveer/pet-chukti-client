@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { toast } from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../../Assets/others/loginBanner.jpg';
 import { AuthContext } from '../../../Context/AuthProvider';
 import SocialLogin from '../SocialLogin/SocialLogin';
@@ -10,6 +10,9 @@ const Login = () => {
     useTitle('Login')
     const {signInUser,loading} = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from.pathname || "/";
+
     const handleLogIn = event =>{
         event.preventDefault();
         const form = event.target;
@@ -20,7 +23,26 @@ const Login = () => {
         .then(result=>{
             const user = result.user;
             toast.success('Succesfully Logged in');
-            navigate('/');
+
+            const currentUser={
+              email:user?.email
+            }
+            //get jwt token
+            fetch("http://localhost:5000/jwt",{
+              method:"POST",
+              headers:{
+                'content-type':'application/json'
+              },
+              body:JSON.stringify(currentUser)
+            })
+            .then(res=>res.json())
+            .then(data=>{
+              console.log(data);
+              localStorage.setItem('token',data.token);
+              navigate(from, { replace: true });
+            })
+
+
 
         })
         .catch(err=>console.log(err))
