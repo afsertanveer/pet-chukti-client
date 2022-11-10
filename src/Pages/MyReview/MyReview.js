@@ -34,9 +34,6 @@ const MyReview = () => {
           });
       }
     };
-    const handleEditReview = id =>{
-        
-    }
     return (
       <div>
         {myReviews.length > 0 && (
@@ -66,7 +63,6 @@ const MyReview = () => {
                     key={review._id}
                     review={review}
                     handleDelete={handleDelete}
-                    handleEditReview={handleEditReview}
                   ></ReviewRow>
                 ))}
               </tbody>

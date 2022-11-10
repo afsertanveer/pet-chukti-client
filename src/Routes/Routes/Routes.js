@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../LayOut/Main";
+import EditReview from "../../Pages/EditReview/EditReview";
 import SignUp from "../../Pages/Login/SignUp/SignUp";
 import Menu from "../../Pages/Menu/Menu";
 import MenuDetails from "../../Pages/Shared/MenuDetails/MenuDetails";
@@ -56,6 +57,12 @@ export const router = createBrowserRouter([
             <MyReview></MyReview>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/editReview/:id",
+        element: <EditReview></EditReview>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/review/reviewDetails/${params.id}`),
       },
     ],
   },
