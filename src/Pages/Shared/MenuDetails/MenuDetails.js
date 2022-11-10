@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { FaStar } from "react-icons/fa";
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 import Review from '../../Review/Review';
 const MenuDetails = () => {
     const {user} = useContext(AuthContext);
@@ -10,6 +11,7 @@ const MenuDetails = () => {
     const [userSetRating,setUserSetRating] = useState(5);
     const menu =useLoaderData();
     const {_id,photoURL,name,price,description} = menu;
+    useTitle(name);
     const email=user?.email;
     const userPhoto = user?.photoURL;
     const handleSubmit = event =>{

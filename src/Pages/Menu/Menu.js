@@ -1,8 +1,10 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 import MenuItem from './../Shared/MenuItem/MenuItem';
 
 const Menu = () => {
+  useTitle('Menu')
     const menuItems = useLoaderData();
     return (
       <div>
